@@ -4,7 +4,8 @@ Script Name: spcpAssemblyReport
 Created By: Dan Catchpole
 Creation Date: 03/22/2015 10:30:04 PM
 Modified Date: 
-Script Purpose: Allows for customization of SalesPad Assembly Report to include simple Bin Numbers, as well as SOP Header information if linked to a Sales Order.
+Script Purpose: Allows for customization of SalesPad Assembly Report to include simple Bin Numbers
+as well as SOP Header information if linked to a Sales Order.
 Change Notes:
  
 ============================================= 
