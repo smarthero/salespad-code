@@ -1,0 +1,22 @@
+/*
+============================================= 
+Script Name: Customer Unapplied Payments
+Created By: Dan Catchpole - dan.catchpole@integratedbusinessgroup.com
+Creation Date: 03/23/2015 10:35:08 AM
+Modified Date: 
+Script Purpose: SalesPad On-Load Script for Customer Card to open a popup window showing the customer’s unapplied amount balance.
+Change Notes:
+ 
+============================================= 
+*/
+
+if(args.Customer.val_Unapplied_Amount > 0) 
+System.Windows.Forms.MessageBox.Show(
+args.Customer.val_Customer_Name.ToString()
++ " has an unapplied Credit Balance of: "
++ args.Customer.val_Unapplied_Amount.ToString("c"),
+"Important Note",
+MessageBoxButtons.OK,
+MessageBoxIcon.Exclamation,
+MessageBoxDefaultButton.Button1); 
+return "";
