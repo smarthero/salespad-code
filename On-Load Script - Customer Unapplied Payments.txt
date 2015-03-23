@@ -1,0 +1,10 @@
+if(args.Customer.val_Unapplied_Amount > 0) 
+System.Windows.Forms.MessageBox.Show(
+args.Customer.val_Customer_Name.ToString()
++ " has an unapplied Credit Balance of: "
++ args.Customer.val_Unapplied_Amount.ToString("c"),
+"Important Note",
+MessageBoxButtons.OK,
+MessageBoxIcon.Exclamation,
+MessageBoxDefaultButton.Button1); 
+return "";
