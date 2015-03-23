@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report name="TNR Technical Credit Card Receipt">
+<search name="Payment Number:" column="Document_Number" searchOp="=" AutoLinks="true" GroupFooterShowMode="Expanded" bestFitAll="true">
+<query addWhere="true">
+
+<![CDATA[
+      SELECT 
+	[Document_Number] as [Payment Number]
+	,[Apply_To_Document_Number] as [Invoice Number]
+	,[Apply_To_Amount] as [Applied To Invoice]
+	,[Document_Date] as [Doc Date]
+	,[Customer_Name]
+	,[CC_Type]
+	,[CC_Number_Masked]
+	,[Amount] as [Total Amount Charged]
+	,[Auth_Code]
+	
+      
+  FROM [TNR].[spcc].[CreditCardProcessorLog] as cc
+
+  inner join spvCashApplication on cc.Document_Number=spvCashApplication.Apply_From_Document_Number
+/*where*/
+]]>
+
+
+</query>
+
+	<column name="Payment Number" BestFit="true" />
+	<column name="Invoice Number" BestFit="true" />
+	<column name="Applied To Invoice" BestFit="true" />
+	<column name="Doc Date" BestFit="true" />
+	<column name="Customer_Name" BestFit="true" />
+	<column name="CC_Type" BestFit="true" />
+	<column name="CC_Number_Masked" BestFit="true" />
+	<column name="Total Amount Charged" BestFit="true" />
+	<column name="Auth_Code" BestFit="true" />
+	
+  
+  <OnRunScript>
+  </OnRunScript>
+</search>
+</report>
