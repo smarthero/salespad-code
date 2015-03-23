@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<report name="TNR Technical Credit Card Receipt">
+<report name="Credit Card Receipt w Detail">
 <search name="Payment Number:" column="Document_Number" searchOp="=" AutoLinks="true" GroupFooterShowMode="Expanded" bestFitAll="true">
 <query addWhere="true">
 
