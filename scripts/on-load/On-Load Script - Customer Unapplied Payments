@@ -1,3 +1,15 @@
+/*
+============================================= 
+Script Name: On-Load Customer Unapplied Balance 
+Created By: Dan Catchpole - dan.catchpole@integratedbusinessgroup.com
+Creation Date: 03/23/2015 10:37:35 AM
+Modified Date: 
+Script Purpose: Customer Card On-Load Popup Window displaying customer unapplied balance amount if > 0
+Change Notes:
+ 
+============================================= 
+*/
+
 if(args.Customer.val_Unapplied_Amount > 0) 
 System.Windows.Forms.MessageBox.Show(
 args.Customer.val_Customer_Name.ToString()
