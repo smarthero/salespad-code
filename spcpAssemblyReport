@@ -1,0 +1,41 @@
+/*
+============================================= 
+Script Name: spcpAssemblyReport
+Created By: Dan Catchpole - dan.catchpole@integratedbusinessgroup.com
+Creation Date: 03/22/2015 10:30:04 PM
+Modified Date: 
+Script Purpose: Allows for customization of SalesPad Assembly Report to include simple Bin Numbers, as well as SOP Header information if linked to a Sales Order.
+Change Notes:
+ 
+============================================= 
+*/
+
+
+USE [TWO]
+GO
+/****** Object:  StoredProcedure [dbo].[spcpAssemblyReport]    Script Date: 3/22/2015 4:13:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER  procedure [dbo].[spcpAssemblyReport]
+
+      @assemblydocnumber nvarchar(9)=''
+
+as
+
+
+--// cAssemblyHeader [Added SOP Link and SOP Header]
+select sa.*, sd.Sales_Doc_Num, sd.Req_Ship_Date, sd.Shipping_Method  from spvAssembly sa
+inner join spvSalesLineAssemblyLink sla on sa.Assembly_Doc_Num=sla.Assembly_Doc_Num
+inner join spv3SalesDocument sd on sla.Sales_Doc_Num=sd.Sales_Doc_Num
+ where sa.Assembly_Doc_Num = @assemblydocnumber
+ 
+
+--// cAssemblyItem
+select asl.*, itmsite.BINNMBR From spvAssemblyLine asl inner join
+iv00102 itmsite on itmsite.ITEMNMBR = asl.Item_Number
+and itmsite.LOCNCODE = asl.Warehouse_Code where Assembly_Doc_Num = @assemblydocnumber
+
+SET ANSI_NULLS OFF
