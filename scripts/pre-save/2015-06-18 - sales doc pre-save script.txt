@@ -1,0 +1,89 @@
+ foreach(SalesPad.Bus.SalesLineItem sli in sd.LineItems)    
+{
+     
+      if(sli.val_Unit_Price < sli.val_Unit_Cost &&  !sli.IsMarkedToDelete && !(sli.val_Unit_Price ==0 && sli.val_Unit_Cost==0))
+    {
+    e.Cancel = true;
+    return "Price is lower than cost";
+    
+    }
+
+}
+string message="";
+if(sd.val_Sales_Doc_ID=="TRANSFER" && sd.val_Customer_Num!="TNR TRANSFERS")
+               {
+                              e.Cancel = true;
+                              message+="Sales Transfers are only available to Customer ID: TNR TRANSFERS.\n";
+               }              
+
+else
+
+if (sd.val_Sales_Doc_ID=="TRANSFER" && sd.val_Warehouse_Code==sd.val_Ship_To_Address_Code)
+               {
+                              e.Cancel = true;
+                              message+="Ship From Warehouse and Ship-To Warehouse Cannot Match On A Transfer.\n Please Select a new Warehouse or Ship-To Warehouse.";
+               }
+else
+if(sd.val_Sales_Doc_ID!="TRANSFER" && sd.val_Customer_Num=="TNR TRANSFERS")
+               {
+                              e.Cancel = true;
+                              message+="Customer TNR TRANSFERS is for Sales Transfers Only.\n";
+
+
+	}
+//Check State and if it's Florida, Tax Schedule must be in FL, Exempt, or 2xxxx
+if(	
+
+sd.val_State =="FL" &&  (!sd.val_Tax_Schedule.StartsWith("FL")) && (!sd.val_Tax_Schedule.StartsWith("EXE")) && (!sd.val_Tax_Schedule.StartsWith("20"))
+
+)
+
+	{
+
+	e.Cancel = true;
+
+	message += "Florida Customers must be assigned a FL Tax Schedule ID,  EXEMPT or have a Resale Cert. \n";
+
+	}
+//Check State and if CA Throw Up Tax Sched Error
+if(	
+
+sd.val_State =="CA" &&  (!sd.val_Tax_Schedule.StartsWith("CA")) && (!sd.val_Tax_Schedule.StartsWith("EXE")) && (!sd.val_Tax_Schedule.StartsWith("20"))
+
+)
+
+	{
+
+	e.Cancel = true;
+
+	message += "California Customers must be assigned a CA Tax Schedule ID, EXEMPT or have a Resale Cert. \n";
+
+	}
+
+//Check State if NC Throw up Tax Sched. Error
+if(	
+
+sd.val_State =="NC" &&  (!sd.val_Tax_Schedule.StartsWith("NC")) && (!sd.val_Tax_Schedule.StartsWith("EXE")) && (!sd.val_Tax_Schedule.StartsWith("20"))
+
+)
+
+	{
+
+	e.Cancel = true;
+
+	message += "North Carolina Customers must be assigned a NC Tax Schedule ID, EXEMPTt or have a Resale Cert. \n";
+
+}
+
+//Uppercase the Address Block
+sd.val_Address_Line_1 = sd.val_Address_Line_1.ToUpper();
+sd.val_Address_Line_2 = sd.val_Address_Line_2.ToUpper();
+sd.val_Address_Line_3 = sd.val_Address_Line_3.ToUpper();
+sd.val_City = sd.val_City.ToUpper();
+sd.val_State = sd.val_State.ToUpper();
+
+
+return message;
+
+
+return "";

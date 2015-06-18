@@ -1,0 +1,417 @@
+string message = "";
+
+//Checks Zip Code field, cancels Save action until Zip Code is not blank, popup informs user.
+
+if (addr.val_Zip == "")
+
+	{
+
+	e.Cancel = true;
+
+	message += "Enter a Zipcode to continue. \n";
+
+	}
+
+	
+
+//Checks State field, cancels Save action until State is not blank, popup informs user.	
+
+if(addr.val_State =="")
+
+	{
+
+	e.Cancel = true;
+
+	message += "Enter a State or Province to continue. \n";
+
+	}
+
+	
+
+//Checks Warehouse Code, cancels Save action until Warehouse Code is assigned, popup informs user.	
+
+if(addr.val_Warehouse_Code =="")
+
+	{
+
+	e.Cancel = true;
+
+	message += "Select a Warehouse Location to continue. \n";
+
+	}
+
+	
+
+//Checks Sales Territory, cancels Save action until Sales Territory is assigned, popup informs user.	
+
+if(addr.val_Sales_Territory =="")
+
+	{
+
+	e.Cancel = true;
+
+	message += "Select a Sales Territory to continue. \n";
+
+	}
+
+//Checks Tax Schedule, cancels Save action until a Tax Schedule is assigned, popup informs user.
+
+if(addr.val_Tax_Schedule == "")
+
+	{
+
+	e.Cancel = true;
+
+	message += "Select a Tax Schedule to continue. \n";
+
+	}
+
+	
+
+//On Save, if Address record State in list below, assigned #2 warehouse.	
+
+//if(
+
+//addr.val_State=="WA" || 
+
+//addr.val_State=="OR" || 
+
+//addr.val_State=="CA" || 
+
+//addr.val_State=="NV" || 
+
+//addr.val_State=="AZ" ||
+
+//addr.val_State=="UT" || 
+
+//addr.val_State=="ID" ||
+
+//addr.val_State=="MT" ||
+
+//addr.val_State=="WY" ||
+
+//addr.val_State=="CO" ||
+
+//addr.val_State=="NM" ||
+
+//addr.val_State=="TX" ||
+
+//addr.val_State=="OK" ||
+
+//addr.val_State=="KS" ||
+
+//addr.val_State=="NE" ||
+
+//addr.val_State=="SD" ||
+
+//addr.val_State=="ND" ||
+
+//addr.val_State=="AK" ||
+
+//addr.val_State=="HI"
+
+//)  
+
+//	{
+
+//	 addr.val_Warehouse_Code = "2";
+
+//	}
+
+//On Save, if Address record State in list below, assigns #1 warehouse.	
+
+//if(
+
+//addr.val_State=="MI" ||
+
+//addr.val_State=="MN" ||
+
+//addr.val_State=="IA" ||
+
+//addr.val_State=="MS" ||
+
+//addr.val_State=="MO" ||
+
+//addr.val_State=="MA" ||
+
+//addr.val_State=="IL" ||
+
+//addr.val_State=="IN" ||
+
+//addr.val_State=="OH" ||
+
+//addr.val_State=="KY" ||
+
+//addr.val_State=="TN" ||
+
+//addr.val_State=="AL" ||
+
+//addr.val_State=="LA" ||
+
+//addr.val_State=="GA" ||
+
+//addr.val_State=="FL" ||
+
+//addr.val_State=="DC" ||
+
+//addr.val_State=="SC" ||
+
+//addr.val_State=="NC" ||
+
+//addr.val_State=="VA" ||
+
+//addr.val_State=="VT" ||
+
+//addr.val_State=="WV" ||
+
+//addr.val_State=="MD" ||
+
+//addr.val_State=="NJ" ||
+
+//addr.val_State=="NY" ||
+
+//addr.val_State=="VT" ||
+
+//addr.val_State=="NH" ||
+
+//addr.val_State=="WI" ||
+
+//addr.val_State=="DE" ||
+
+//addr.val_State=="RI" ||
+
+//addr.val_State=="CT" ||
+
+//addr.val_State=="PA"
+
+//)
+
+//	{
+
+//	addr.val_Warehouse_Code = "1";
+
+//	}
+
+//Assigns Sales Territory to NC if State in list below On Save	
+
+if(
+
+addr.val_State=="MN" ||
+
+addr.val_State=="IA" ||
+
+addr.val_State=="WI" ||
+
+addr.val_State=="MO" ||
+
+addr.val_State=="IL" ||
+
+addr.val_State=="IN" ||
+
+addr.val_State=="MI" ||
+
+addr.val_State=="KY" ||
+
+addr.val_State=="WV" ||
+
+addr.val_State=="VA" ||
+
+addr.val_State=="NC" ||
+
+addr.val_State=="MD" ||
+
+addr.val_State=="DC" ||
+
+addr.val_State=="DE" ||
+
+addr.val_State=="PA" ||
+
+addr.val_State=="NJ" ||
+
+addr.val_State=="NY" ||
+
+addr.val_State=="VT" ||
+
+addr.val_State=="NH" ||
+
+addr.val_State=="ME" ||
+
+addr.val_State=="MA" ||
+
+addr.val_State=="RI" ||
+
+addr.val_State=="CT" ||
+
+addr.val_State=="OH" 
+
+)
+
+	{
+
+	addr.val_Sales_Territory = "NC";
+	addr.val_Country_Code="USA";
+	addr.val_Country="UNITED STATES";
+
+	}
+
+//Assigns Sales Territory to FL if State in list below On Save	
+
+if(	
+
+addr.val_State=="OK" ||
+
+addr.val_State=="TX" ||
+
+addr.val_State=="LA" ||
+
+addr.val_State=="AR" ||
+
+addr.val_State=="MS" ||
+
+addr.val_State=="TN" ||
+
+addr.val_State=="AL" ||
+
+addr.val_State=="GA" ||
+
+addr.val_State=="SC" ||
+
+addr.val_State=="FL" 
+
+)
+
+	{
+
+	addr.val_Sales_Territory = "FL";
+	addr.val_Country_Code="USA";
+	addr.val_Country="UNITED STATES";
+
+	}
+//Assigns Sales Territory to TX if in list below On Save
+if(	
+
+addr.val_State=="TX"
+
+)
+
+	{
+
+	addr.val_Sales_Territory = "TX";
+	addr.val_Country_Code="USA";
+	addr.val_Country="UNITED STATES";
+
+	}
+
+//Assigns Sales Territory to CA if State in list below On Save
+
+if(
+
+addr.val_State=="WA" ||
+
+addr.val_State=="OR" ||
+
+addr.val_State=="CA" ||
+
+addr.val_State=="AZ" ||
+
+addr.val_State=="NM" ||
+
+addr.val_State=="CO" ||
+
+addr.val_State=="UT" ||
+
+addr.val_State=="NV" ||
+
+addr.val_State=="ID" ||
+
+addr.val_State=="WY" ||
+
+addr.val_State=="MT" ||
+
+addr.val_State=="ND" ||
+
+addr.val_State=="SD" ||
+
+addr.val_State=="NE" ||
+
+addr.val_State=="KS" ||
+
+addr.val_State=="HI" ||
+
+addr.val_State=="AK" 
+
+)
+
+	{
+
+	addr.val_Sales_Territory= "CA";
+	addr.val_Country_Code="USA";
+	addr.val_Country="UNITED STATES";
+
+	}
+
+//Assigns Sales Territory to INTL if Country Code <> UNITED STATES On Save
+//if(	
+
+//addr.val_Country_Code !="USA" || addr.val_Country != "UNITED STATES"
+
+//)
+
+//	{
+
+//	addr.val_Sales_Territory = "INTL";
+
+//	}
+
+//Check State and if it's Florida, Tax Schedule must be in FL, Exempt, or 2xxxx
+if(	
+
+addr.val_State =="FL" &&  (!addr.val_Tax_Schedule.StartsWith("FL")) && (!addr.val_Tax_Schedule.StartsWith("EXE")) && (!addr.val_Tax_Schedule.StartsWith("20"))
+
+)
+
+	{
+
+	e.Cancel = true;
+
+	message += "Florida Customers must be assigned a FL Tax Schedule ID,  EXEMPT or have a Resale Cert. \n";
+
+	}
+//Check State and if CA Throw Up Tax Sched Error
+if(	
+
+addr.val_State =="CA" &&  (!addr.val_Tax_Schedule.StartsWith("CA")) && (!addr.val_Tax_Schedule.StartsWith("EXE")) && (!addr.val_Tax_Schedule.StartsWith("20"))
+
+)
+
+	{
+
+	e.Cancel = true;
+
+	message += "California Customers must be assigned a CA Tax Schedule ID, EXEMPT or have a Resale Cert. \n";
+
+	}
+
+//Check State if NC Throw up Tax Sched. Error
+if(	
+
+addr.val_State =="NC" &&  (!addr.val_Tax_Schedule.StartsWith("NC")) && (!addr.val_Tax_Schedule.StartsWith("EXE")) && (!addr.val_Tax_Schedule.StartsWith("20"))
+
+)
+
+	{
+
+	e.Cancel = true;
+
+	message += "North Carolina Customers must be assigned a NC Tax Schedule ID, EXEMPTt or have a Resale Cert. \n";
+
+	}
+	
+//Uppercase the Address Block
+addr.val_Address_Line_1 = addr.val_Address_Line_1.ToUpper();
+addr.val_Address_Line_2 = addr.val_Address_Line_2.ToUpper();
+addr.val_Address_Line_3 = addr.val_Address_Line_3.ToUpper();
+addr.val_City = addr.val_City.ToUpper();
+addr.val_State = addr.val_State.ToUpper();
+
+return message;
