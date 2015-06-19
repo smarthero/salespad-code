@@ -276,6 +276,8 @@ addr.val_State=="GA" ||
 
 addr.val_State=="SC" ||
 
+addr.val_State=="PR" ||
+
 addr.val_State=="FL" 
 
 )
