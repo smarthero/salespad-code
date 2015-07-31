@@ -48,7 +48,7 @@ sd.val_State =="FL" &&  (!sd.val_Tax_Schedule.StartsWith("FL")) && (!sd.val_Tax_
 //Check State and if CA Throw Up Tax Sched Error
 if(	
 
-sd.val_State =="CA" &&  (!sd.val_Tax_Schedule.StartsWith("CA")) && (!sd.val_Tax_Schedule.StartsWith("EXE")) && (!sd.val_Tax_Schedule.StartsWith("20"))
+sd.val_State =="CA" &&  (!sd.val_Tax_Schedule.StartsWith("CA")) && (!sd.val_Tax_Schedule.StartsWith("EXE")) && (!sd.val_Tax_Schedule.StartsWith("20") && (!sd.val_Tax_Schedule.StartsWith("ON FILE"))
 
 )
 
@@ -56,14 +56,14 @@ sd.val_State =="CA" &&  (!sd.val_Tax_Schedule.StartsWith("CA")) && (!sd.val_Tax_
 
 	e.Cancel = true;
 
-	message += "California Customers must be assigned a CA Tax Schedule ID, EXEMPT or have a Resale Cert. \n";
+	message += "California Customers must be assigned a CA Tax Schedule ID, EXEMPT or ON FILE. \n";
 
 	}
 
 //Check State if NC Throw up Tax Sched. Error
 if(	
 
-sd.val_State =="NC" &&  (!sd.val_Tax_Schedule.StartsWith("NC")) && (!sd.val_Tax_Schedule.StartsWith("EXE")) && (!sd.val_Tax_Schedule.StartsWith("20"))
+sd.val_State =="NC" &&  (!sd.val_Tax_Schedule.StartsWith("NC")) && (!sd.val_Tax_Schedule.StartsWith("EXE")) && (!sd.val_Tax_Schedule.StartsWith("20") && (!sd.val_Tax_Schedule.StartsWith("ON FILE"))
 
 )
 
@@ -71,7 +71,7 @@ sd.val_State =="NC" &&  (!sd.val_Tax_Schedule.StartsWith("NC")) && (!sd.val_Tax_
 
 	e.Cancel = true;
 
-	message += "North Carolina Customers must be assigned a NC Tax Schedule ID, EXEMPTt or have a Resale Cert. \n";
+	message += "North Carolina Customers must be assigned a NC Tax Schedule ID, EXEMPTt or ON FILE. \n";
 
 }
 

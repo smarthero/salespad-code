@@ -1,0 +1,16 @@
+//Sales Doc Entry Pre-Save Script
+//On new orders/invoices/quotes if Customer in Customer Class prevent save until unapproved items are removed.
+//Used in combination with Item Master / Sales Line Item UDF xApprovedPart
+
+	if (sd.val_Sales_Doc_Num=="" && sd.Customer.val_Customer_Class=="[insert Class ID here]")
+		{
+		foreach (SalesPad.Bus.SalesLineItem sli in sd.LineItems)
+			{
+				if ((bool)sli["xApprovePart"]==false)
+					{
+						e.Cancel = true;
+						Messenger.Show("Non-" + sd.Customer.val_Customer_Class + " Approved Items Are On This Order. \n \nRemove them to continue.");
+					}
+			}
+		} 
+	return message;

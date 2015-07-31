@@ -1,0 +1,10 @@
+//Sales Doc Entry Pre-Save Script
+//Warns user that item they've added to order is unapproved for Customer Class.
+//Used in combination with Item Master / Sales Line Item UDF xApprovedPart
+
+     	if((bool)sli["xApprovedPart"]==false  && sd.Customer.val_Customer_Class=="[CUSTOMER CLASS]")
+		{
+        e.Cancel=true;
+         return sli.val_Item_Number + " is not a " + sd.Customer.val_Customer_Class +"-Approved Item. \n \nDelete the item to continue.";
+		}
+		return message;  
