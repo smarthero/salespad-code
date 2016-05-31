@@ -14,3 +14,20 @@
 			}
 		} 
 	return message;
+
+
+//Version that compares a boolean and a datefield
+string message="";
+if (sd.val_Sales_Doc_Type=="ORDER") 
+		{
+		foreach (SalesPad.Bus.SalesLineItem sli in sd.LineItems)
+			{
+			if ((bool)sli["xNeedPurchase"]==true &&  (DateTime)sli["xReqPurchDate"] == Convert.ToDateTime("1/1/1900"))
+				{
+				e.Cancel = true;
+				Messenger.Show("Needs Purchase has been checked on Item Number " + sli.val_Item_Number +"\nAnticipated Delivery Date Required.");
+				}
+			}
+		}
+return message;
+
