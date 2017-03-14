@@ -1,0 +1,17 @@
+Bus.SystemUser su = new Bus.SystemUser(Framework.Controller.Credentials.UserName);
+
+//When emailing a Sales Document, the Purchase Order (po) will be null.
+//When emailing a Purchase Order, the Sales Document (sd) will be null.
+if (po != null && !po.IsNew)
+{
+	email.val_Email_BCC = su.val_Email;
+}
+
+if (sd != null && !sd.IsNew)
+{
+	
+	email.val_Email_BCC = su.val_Email;
+	
+}
+
+return String.Empty;
